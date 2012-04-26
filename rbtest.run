@@ -1,0 +1,14 @@
+#!/bin/bash
+
+./rbtest
+test $? -eq 0 || exit -1
+
+diff {r,w}file
+
+if [ $? -eq 0 ]; then
+    echo 'succeeded!'
+else
+    echo 'failed!'
+fi
+
+rm {r,w}file
